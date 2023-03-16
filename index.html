@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+</head>
+<body>
+    <div id="intro">
+        <h1>Welcome to my Quiz</h1>
+        <h2 id="headerText">What is your name?</h2><br>
+    </div>
+
+    <div id="greetingInput">
+        <input id="userName"> <br>
+        <button onclick="greeting()">Submit</button>
+    </div>
+
+    <div id="quiz">
+        <h3 id="question"></h3>
+        <div id="answerA" onclick="aFunction()"></div>
+        <div id="answerB" onclick="bFunction()"></div>
+        <div id="answerC" onclick="cFunction()"></div>
+        <div id="answerD" onclick="dFunction()"></div>
+
+        <div id="q1Button" onclick="submitQ1()"><button>Submit Q1</button></div>
+        <div id="q2Button" onclick="submitQ2()"><button>Submit Q2</button></div>
+        <div id="q3Button" onclick="submitQ3()"><button>Submit Q3</button></div>
+    
+
+    </div>
+
+
+    <style>
+        #greetingInput {text-align: center; color: floralwhite;}
+        #intro {text-align: center; color: floralwhite;}
+        #quiz {text-align: center; color: floralwhite}
+        body {background-color: darkslategray;}
+    </style>
+
+    <script>
+        let userName = document.querySelector("#userName");
+        let headerText= document.querySelector("#headerText");
+        let greetingInput= document.querySelector("#greetingInput");
+        let quiz= document.querySelector("#quiz");
+        let q1Button= document.querySelector("#q1Button");
+        let q2Button= document.querySelector("#q2Button");
+        let q3Button= document.querySelector("#q3Button");
+
+        let question= document.querySelector("#question");
+        let answerA= document.querySelector("#answerA");
+        let answerB= document.querySelector("#answerB");
+        let answerC= document.querySelector("#answerC");
+        let answerD= document.querySelector("#answerD");
+        let iterationNumber = 0;
+        let qChoice= "";
+        let score = 0;
+
+
+        let questionList = [
+            "What state am I from?",
+            "What's the coolest Temple?",
+            "What is Luffy's last name?"
+            // "Who said who?",
+            // "Who said why?"
+        ]
+
+        let aAnswerList=["California", "My brain", "Garp" ]
+        let bAnswerList=["Mexico", "Coding Temple", "Him" ]
+        let cAnswerList=["Texas", "Xiolin Temple", "Monkey" ]
+        let dAnswerList=["Georgia", "Idk",  "Dragon"]
+
+        
+        quiz.style.display= "none";
+        q1Button.style.display= "none";
+        q2Button.style.display= "none";
+        q3Button.style.display= "none";
+
+
+
+        function greeting() {
+            headerText.innerHTML = ""
+            headerText.innerHTML = "Hello " + userName.value + ", Welcome to my Quiz. ";
+            greetingInput.style.display = "none";
+            quiz.style.display= "block";
+            q1Button.style.display = "block";
+            question.innerHTML = questionList[iterationNumber];
+            answerA.innerHTML =aAnswerList[iterationNumber];
+            answerB.innerHTML =bAnswerList[iterationNumber];
+            answerC.innerHTML =cAnswerList[iterationNumber];
+            answerD.innerHTML =dAnswerList[iterationNumber];
+           
+        }
+
+        function aFunction(){
+            answerA.style.color = 'red';
+            answerB.style.color = 'floralwhite';
+            answerC.style.color = 'floralwhite';
+            answerD.style.color = 'floralwhite';
+            qChoice = "a";
+        }
+        function bFunction(){
+            answerA.style.color = 'floralwhite';
+            answerB.style.color = 'red';
+            answerC.style.color = 'floralwhite';
+            answerD.style.color = 'floralwhite';
+            qChoice = 'b';
+        }
+        function cFunction(){
+            answerA.style.color = 'floralwhite';
+            answerB.style.color = 'floralwhite';
+            answerC.style.color = 'red';
+            answerD.style.color = 'floralwhite';
+            qChoice = 'c';
+        }
+        function dFunction(){
+            answerA.style.color = 'floralwhite';
+            answerB.style.color = 'floralwhite';
+            answerC.style.color = 'floralwhite';
+            answerD.style.color = 'red';
+            qChoice = 'd'
+        }
+
+        function submitQ1() {
+            if (qChoice == "a") {
+            score= score +1;
+        }
+        // q1Button.style.display = "none";
+        // q2Button.style.display = "block";
+
+        q1Button.style.display = "none";
+        q2Button.style.display = "block";
+
+        iterationNumber += 1;
+
+        answerA.style.color = 'floralwhite';
+        answerB.style.color = 'floralwhite';
+        answerC.style.color = 'floralwhite';
+        answerD.style.color = 'floralwhite';
+        question.innerHTML= questionList[iterationNumber];
+        answerA.innerHTML= aAnswerList[iterationNumber];
+        answerB.innerHTML= bAnswerList[iterationNumber];
+        answerC.innerHTML= cAnswerList[iterationNumber];
+        answerD.innerHTML= dAnswerList[iterationNumber];
+        
+    }
+        function submitQ2() {
+            if (qChoice == "b") {
+            score= score +1;
+        }
+        iterationNumber += 1;
+        question.innerHTML= questionList[iterationNumber];
+        q2Button.style.display = "none";
+        q3Button.style.display = "block";
+        answerA.style.color = 'floralwhite';
+        answerB.style.color = 'floralwhite';
+        answerC.style.color = 'floralwhite';
+        answerD.style.color = 'floralwhite';
+        answerA.innerHTML= aAnswerList[iterationNumber];
+        answerB.innerHTML= bAnswerList[iterationNumber];
+        answerC.innerHTML= cAnswerList[iterationNumber];
+        answerD.innerHTML= dAnswerList[iterationNumber];
+        
+        
+        
+    }
+        function submitQ3() {
+            if (qChoice == "c") {
+            score= score +1;
+        }
+        iterationNumber += 1;
+        headerText.innerHTML= "Your score is  " + score;
+        quiz.style.display = "none"
+        answerA.style.color = 'floralwhite';
+        answerB.style.color = 'floralwhite';
+        answerC.style.color = 'floralwhite';
+        answerD.style.color = 'floralwhite';
+        
+        
+        
+        
+    }
+
+    </script>
+
+    
+</body>
+</html>
